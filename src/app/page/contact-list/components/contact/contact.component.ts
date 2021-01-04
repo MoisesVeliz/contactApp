@@ -16,11 +16,11 @@ export class ContactComponent implements OnInit {
 
   constructor() {
     this.contact = {
-      thumb: '',
+      dni: '',
+      name: '',
       cellphone: '',
-      codeArea: '',
-      contactName: '',
-      birdthday: new Date(),
+      address: '',
+      birthday: '',
       id: ''
     };
   }
@@ -29,11 +29,11 @@ export class ContactComponent implements OnInit {
   }
 
   edit(): void{
-    this.editContact.emit({id: this.contact.id, edit: true, delete: false});
+    this.editContact.emit({id: this.contact.id, isEdit: true, isDelete: false});
   }
 
   delete(): void{
-    this.deleteContact.emit({id: this.contact.id, delete: true, edit: false});
+    this.deleteContact.emit({id: this.contact.id, isDelete: true, isEdit: false});
   }
 
 }

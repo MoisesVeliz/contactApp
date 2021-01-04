@@ -37,7 +37,8 @@
 
 <ng-template #content let-modal>
   <app-modal
-    (saveData)="modal.dismiss()"
+    [contact]="contactToEdit"
+    (saveData)="modal.dismiss($event)"
     (closeModal)="modal.close()"
   ></app-modal>
 </ng-template>

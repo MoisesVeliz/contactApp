@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Contact } from 'src/app/page/contact-list/model/contact.model';
-import { v4 as uuidv4 } from 'uuid';
-import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
+import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
+import { LocalStorageService } from '../../shared/services/local-storage.service';
+import { Control } from './model/controls.modal';
 
 @Component({
   selector: 'app-contact-list',
@@ -11,52 +12,87 @@ import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
 export class ContactListComponent implements OnInit {
 
   contacts: Contact[];
-  closeResult = '';
+  contactToEdit: Contact | undefined;
 
-  constructor(private modalService: NgbModal) {
+  constructor(private modalService: NgbModal, private ls: LocalStorageService) {
     this.contacts = [];
+    this.contactToEdit = {
+      dni: '',
+      name: '',
+      cellphone: '',
+      address: '',
+      birthday: '',
+      id: ''
+    };
   }
 
   ngOnInit(): void {
-    this.contacts = [
-      {
-        thumb: '',
-        contactName: 'Moises Veliz',
-        birdthday: new Date(1995, 6, 16),
-        cellphone: '4248872324',
-        codeArea: '+58',
-        id: uuidv4()
-      },
-      {
-        thumb: '',
-        contactName: 'Lisa Stapleton',
-        birdthday: new Date(1995, 6, 16),
-        cellphone: '4248872324',
-        codeArea: '+58',
-        id: uuidv4()
-      },
-    ];
+    this.getContacts();
   }
 
-  open(content: any, e?: any): void {
-    console.log(e);
+  saveContact(contact: Contact): void{
+    this.ls.saveContact(contact);
+    this.getContacts();
+    this.clearForm();
+  }
+
+  deleteContact(contact: Control): void{
+    this.ls.deleteContact(contact.id);
+    this.getContacts();
+    this.clearForm();
+  }
+
+  editContact(contact: Contact): void {
+    this.ls.editContact(contact);
+    this.getContacts();
+    this.clearForm();
+  }
+  getContacts(): void{
+    const contacts = this.ls.getContacts();
+    if (contacts === null) {
+      return;
+    }
+    this.contacts = contacts;
+  }
+
+  open(content: any, contact?: Control): void {
+
+    console.log(contact);
+    if ( typeof contact === 'object' ){
+      this.contactToEdit = this.ls.getContact(contact);
+    }
 
     this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
-      this.closeResult = `Closed with: ${result}`;
+      // Cancel modal
+      this.clearForm();
+      console.log(result);
     }, (reason) => {
-      this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+      // dismiss modal
+      console.log(reason);
+      console.log(contact);
+      if (contact?.isDelete){
+        this.deleteContact(contact);
+        return;
+      }
+      if (contact?.isEdit){
+        this.editContact(reason);
+        return;
+      }
+      if (typeof reason === 'object'){
+        this.saveContact(reason);
+      }
     });
   }
 
-  private getDismissReason(reason: any): string {
-    if (reason === ModalDismissReasons.ESC) {
-      return 'by pressing ESC';
-    } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
-      return 'by clicking on a backdrop';
-    } else {
-      return `with: ${reason}`;
-    }
+  clearForm(): void{
+    this.contactToEdit = {
+      dni: '',
+      name: '',
+      cellphone: '',
+      address: '',
+      birthday: '',
+      id: ''
+    };
   }
-
 
 }

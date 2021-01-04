@@ -1,5 +1,5 @@
 export interface Control {
   id: string;
-  edit: boolean;
-  delete: boolean;
+  isDelete: boolean;
+  isEdit: boolean;
 }

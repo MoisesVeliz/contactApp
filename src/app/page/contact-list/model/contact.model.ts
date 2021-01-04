@@ -1,8 +1,8 @@
 export interface Contact {
-  thumb: string;
-  contactName: string;
-  birdthday: Date;
+  dni: string;
+  name: string;
   cellphone: string;
-  codeArea: string;
+  address: string;
+  birthday: string;
   id: string;
 }
