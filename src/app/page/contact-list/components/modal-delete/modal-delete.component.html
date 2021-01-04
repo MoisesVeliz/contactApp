@@ -1,0 +1,26 @@
+<div class="modal-header">
+  <h4 class="modal-title" id="modal-basic-title">Borrar contacto</h4>
+  <button
+    type="button"
+    class="close d-none"
+    aria-label="Close"
+    (click)="close()"
+  >
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="modal-body">
+  <h3>¿Seguro que quieres eliminar el contacto?</h3>
+</div>
+<div class="modal-footer">
+  <button type="button" mat-raised-button class="mx-1" (click)="aceptar()">Aceptar</button>
+  <button
+    type="button"
+    mat-raised-button
+    class="mx-1"
+    color="warn"
+    (click)="close()"
+  >
+    Cancel
+  </button>
+</div>

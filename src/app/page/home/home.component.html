@@ -1,0 +1,22 @@
+<div class="container">
+  <div class="row">
+    <div class="col-5 mx-auto">
+      <app-card
+        *ngFor="let card of cardData"
+        [title]="card.title"
+        [subTitle]="card.subTitle"
+      >
+      </app-card>
+
+      <button
+        mat-raised-button
+        color="primary"
+        class="btn-block py-3"
+        routerLink="/contacts"
+      >
+        <mat-icon aria-label="contacts">groups</mat-icon>
+        <span class="ml-2">Mis contactos</span>
+      </button>
+    </div>
+  </div>
+</div>

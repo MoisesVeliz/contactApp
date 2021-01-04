@@ -1,0 +1,50 @@
+<div class="container">
+  <div class="row">
+    <div class="col-12 position-sticky sticky-top">
+      <div class="d-flex justify-content-end my-3">
+        <button
+          mat-raised-button
+          color="primary"
+          class="py-2"
+          routerLink="/contacts"
+          (click)="open(content)"
+        >
+          <mat-icon aria-label="añadir">person_add</mat-icon>
+
+          <span class="ml-2">Nuevo contacto</span>
+        </button>
+      </div>
+    </div>
+
+    <div class="col-12 px-5" *ngIf="contacts.length > 0; else alert">
+      <app-contact
+        *ngFor="let contact of contacts"
+        [contact]="contact"
+        (editContact)="open(content, $event)"
+        (deleteContact)="open(delete, $event)"
+      ></app-contact>
+    </div>
+
+    <ng-template #alert>
+      <div class="col-12">
+        <h2 class="text-center text-muted mt-5 pt-5">
+          No hay contactos guardados
+        </h2>
+      </div>
+    </ng-template>
+  </div>
+</div>
+
+<ng-template #content let-modal>
+  <app-modal
+    (saveData)="modal.dismiss()"
+    (closeModal)="modal.close()"
+  ></app-modal>
+</ng-template>
+
+<ng-template #delete let-modal>
+  <app-modal-delete
+    ($aceptar)="modal.dismiss()"
+    ($close)="modal.close()"
+  ></app-modal-delete>
+</ng-template>
