@@ -7,7 +7,7 @@ import { ContactListComponent } from './page/dash/contact-list/contact-list.comp
 import { AuthGuard } from './shared/services/auth.guard';
 
 const routes: Routes = [
-  { path: '', component: WelcomeComponent },
+  { path: 'home', component: WelcomeComponent },
   {
     path: 'dash',
     component: DashComponent,
@@ -18,7 +18,8 @@ const routes: Routes = [
       { path: '**', pathMatch: 'full', redirectTo: '' },
     ],
   },
-  { path: '**', pathMatch: 'full', redirectTo: '' },
+  {path: '', pathMatch: 'full', redirectTo: 'home'},
+  { path: '**', pathMatch: 'full', redirectTo: 'home' },
 ];
 
 @NgModule({
