@@ -12,7 +12,7 @@ import { Control } from './model/controls.modal';
 export class ContactListComponent implements OnInit {
 
   contacts: Contact[];
-  contactToEdit: Contact | undefined;
+  contactToEdit: Contact;
 
   constructor(private modalService: NgbModal, private ls: LocalStorageService) {
     this.contacts = [];
@@ -59,7 +59,8 @@ export class ContactListComponent implements OnInit {
 
     console.log(contact);
     if ( typeof contact === 'object' ){
-      this.contactToEdit = this.ls.getContact(contact);
+      const c: any = this.ls.getContact(contact);
+      this.contactToEdit = c;
     }
 
     this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {

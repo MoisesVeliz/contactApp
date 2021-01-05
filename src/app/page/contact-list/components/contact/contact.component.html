@@ -1,19 +1,32 @@
 <mat-card class="d-flex px-5 py-3 contact-container mt-3">
   <div class="thumb mr-5">
-    <mat-icon class="fs-1">account_circle</mat-icon>
+    <mat-icon class="fs-1" color="accent">account_circle</mat-icon>
   </div>
 
   <div class="description mx-5">
-    <p class="contactName">{{contact.name}}</p>
-    <p class="telephone">{{contact.cellphone}}</p>
-    <p class="birdthday">{{contact.birthday}}</p>
+    <p class="contactName">
+      <mat-icon class="mr-2 text-secondary">contact_page</mat-icon>
+      <span>{{contact.name}}</span>
+    </p>
+    <p class="telephone">
+      <mat-icon class="mr-2 text-secondary">phone</mat-icon>
+      <span>{{contact.cellphone}}</span>
+    </p>
+    <p class="birdthday">
+      <mat-icon class="mr-2 text-secondary">event</mat-icon>
+      <span>{{contact.birthday | date}}</span>
+      <span class="ml-2 text-danger" *ngIf="isBirthday">
+        <span>Happy bithday</span>
+        <mat-icon class="ml-2">card_giftcard</mat-icon>
+      </span>
+    </p>
   </div>
 
   <div class="controls ml-auto align-items-center d-flex">
-    <button mat-icon-button color="primary" routerLink="/contacts">
+    <button mat-icon-button class="text-secondary" routerLink="/contacts">
       <mat-icon aria-label="contacts" (click)="edit()">edit</mat-icon>
     </button>
-    <button mat-icon-button color="primary" routerLink="/contacts">
+    <button mat-icon-button class="text-secondary" routerLink="/contacts">
       <mat-icon aria-label="contacts" (click)="delete()">delete</mat-icon>
     </button>
   </div>

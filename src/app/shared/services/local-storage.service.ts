@@ -39,7 +39,7 @@ export class LocalStorageService {
   getContacts(): Contact[] | null{
     this.cs = localStorage.getItem(this.qContacts);
     const contacts = JSON.parse(this.cs);
-    return contacts;
+    return contacts ? contacts : [];
   }
 
   getContact(control: Control | undefined): Contact| undefined{
@@ -55,9 +55,6 @@ export class LocalStorageService {
       localStorage.setItem(this.qContacts, JSON.stringify(contacts));
       console.log('editado con exito');
     }
-
-
-
   }
 
   deleteContact(id: string): void{
@@ -71,7 +68,4 @@ export class LocalStorageService {
     }
   }
 
-  clearStore(): any{
-    localStorage.clear();
-  }
 }

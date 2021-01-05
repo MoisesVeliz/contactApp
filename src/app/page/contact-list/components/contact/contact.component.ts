@@ -1,6 +1,8 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Contact } from 'src/app/page/contact-list/model/contact.model';
 import { Control } from 'src/app/page/contact-list/model/controls.modal';
+import { LocalStorageService } from '../../../../shared/services/local-storage.service';
+import { BirthdayService } from '../../../../shared/services/birthday.service';
 
 @Component({
   selector: 'app-contact',
@@ -14,7 +16,7 @@ export class ContactComponent implements OnInit {
   @Output() editContact = new EventEmitter<Control>();
   @Output() deleteContact = new EventEmitter<Control>();
 
-  constructor() {
+  constructor( private ls: LocalStorageService, private birthday: BirthdayService) {
     this.contact = {
       dni: '',
       name: '',
@@ -34,6 +36,10 @@ export class ContactComponent implements OnInit {
 
   delete(): void{
     this.deleteContact.emit({id: this.contact.id, isDelete: true, isEdit: false});
+  }
+
+  get isBirthday(): boolean {
+    return this.birthday.isBirthday(this.contact);
   }
 
 }

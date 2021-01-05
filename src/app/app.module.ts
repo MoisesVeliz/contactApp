@@ -23,6 +23,7 @@ import { ModalComponent } from './page/contact-list/components/modal/modal.compo
 import { ModalDeleteComponent } from './page/contact-list/components/modal-delete/modal-delete.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HeaderComponent } from './shared/components/header/header.component';
+import { WelcomeComponent } from './page/welcome/welcome.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { HeaderComponent } from './shared/components/header/header.component';
     ContactListComponent,
     ContactComponent,
     ModalComponent,
-    ModalDeleteComponent
+    ModalDeleteComponent,
+    WelcomeComponent
   ],
   imports: [
     BrowserModule,
