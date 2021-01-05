@@ -24,7 +24,7 @@ export class DashComponent implements OnInit {
       console.log(reason);
       if (reason){
         this.auth.clearStore();
-        this.router.navigateByUrl('/home');
+        this.router.navigateByUrl('/');
       }
     });
   }
