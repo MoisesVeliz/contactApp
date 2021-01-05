@@ -1,13 +1,14 @@
 <div class="container">
-    <div class="row ">
-        <div class="col ">
-            <mat-toolbar color="primary" >
-              <button mat-button routerLink="/">
-                <mat-icon class="mr-2">home</mat-icon>
-                <span>Moises Contacts</span>
-              </button>
-                <span class="example-spacer"></span>
-            </mat-toolbar>
-        </div>
+  <div class="row">
+    <div class="col">
+      <mat-toolbar color="primary">
+        <button mat-button routerLink="/dash">
+          <mat-icon class="mr-2">home</mat-icon>
+          <span>{{ userName }}</span>
+        </button>
+        <span class="example-spacer"></span>
+        <button mat-button (click)="salir()">Salir</button>
+      </mat-toolbar>
     </div>
+  </div>
 </div>

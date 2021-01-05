@@ -24,6 +24,8 @@ import { ModalDeleteComponent } from './page/contact-list/components/modal-delet
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HeaderComponent } from './shared/components/header/header.component';
 import { WelcomeComponent } from './page/welcome/welcome.component';
+import { DashComponent } from './shared/components/dash/dash.component';
+import { AlertModalComponent } from './shared/components/alert-modal/alert-modal.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +37,9 @@ import { WelcomeComponent } from './page/welcome/welcome.component';
     ContactComponent,
     ModalComponent,
     ModalDeleteComponent,
-    WelcomeComponent
+    WelcomeComponent,
+    DashComponent,
+    AlertModalComponent
   ],
   imports: [
     BrowserModule,

@@ -18,7 +18,6 @@ export class BirthdayService {
   getBirthdayCount(): Contact[]{
     const contacts: Contact[] | null = this.ls.getContacts();
 
-
     this.birthdayCount = contacts?.filter((element): any => moment(element.birthday).format('DD-MM') === this.today);
 
     return this.birthdayCount ? this.birthdayCount : [];

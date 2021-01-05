@@ -3,6 +3,7 @@ import { Contact } from 'src/app/page/contact-list/model/contact.model';
 import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
 import { LocalStorageService } from '../../shared/services/local-storage.service';
 import { Control } from './model/controls.modal';
+import { element } from 'protractor';
 
 @Component({
   selector: 'app-contact-list',
@@ -47,12 +48,27 @@ export class ContactListComponent implements OnInit {
     this.getContacts();
     this.clearForm();
   }
+
   getContacts(): void{
     const contacts = this.ls.getContacts();
-    if (contacts === null) {
-      return;
-    }
-    this.contacts = contacts;
+    if (contacts === null) { return; }
+
+    const mapped = contacts.map( ( contact: Contact, idx ) => {
+      return {index: idx, value: contact.name.toLowerCase()};
+    });
+
+    mapped.sort(( a, b ) => {
+      if (a.value > b.value) {
+        return 1;
+      }
+      if (a.value < b.value) {
+        return -1;
+      }
+      return 0;
+    });
+    this.contacts = mapped.map( obj => {
+      return contacts[obj.index];
+    });
   }
 
   open(content: any, contact?: Control): void {
@@ -64,13 +80,12 @@ export class ContactListComponent implements OnInit {
     }
 
     this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
+
       // Cancel modal
       this.clearForm();
-      console.log(result);
     }, (reason) => {
+
       // dismiss modal
-      console.log(reason);
-      console.log(contact);
       if (contact?.isDelete){
         this.deleteContact(contact);
         return;

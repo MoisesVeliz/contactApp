@@ -1,0 +1,11 @@
+<div class=" animate__animated animate__fadeIn animate__faster">
+  <app-header (openModal)="open(outSession)"></app-header>
+  <router-outlet></router-outlet>
+</div>
+
+<ng-template #outSession let-modal>
+  <app-alert-modal
+    ($aceptar)="modal.dismiss($event)"
+    ($close)="modal.close()"
+  ></app-alert-modal>
+</ng-template>

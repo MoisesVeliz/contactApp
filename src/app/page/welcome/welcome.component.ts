@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { AuthService } from '../../shared/services/auth.service';
 
 @Component({
@@ -10,9 +11,11 @@ import { AuthService } from '../../shared/services/auth.service';
 export class WelcomeComponent implements OnInit {
 
   isLogin: boolean;
+  toggle: boolean;
 
-  constructor( private formBuilder: FormBuilder, private auth: AuthService ) {
+  constructor( private formBuilder: FormBuilder, private auth: AuthService, private router: Router ) {
     this.isLogin = false;
+    this.toggle = false;
   }
 
   public formGroup!: FormGroup;
@@ -20,6 +23,7 @@ export class WelcomeComponent implements OnInit {
   public ngOnInit(): void {
     this.getSesion();
     this.buildForm();
+    this.goAnimation();
   }
 
   private buildForm(): void{
@@ -30,8 +34,7 @@ export class WelcomeComponent implements OnInit {
 
   getSesion(): void{
      if ( this.auth.getSesion().status === 'error' ) { return; }
-
-     this.isLogin = true;
+     this.router.navigateByUrl('/dash');
   }
 
   onSubmit(): void{
@@ -43,7 +46,13 @@ export class WelcomeComponent implements OnInit {
     if (resp.status === 'error') { return; }
 
     this.isLogin = true;
+    this.router.navigateByUrl('/dash');
+  }
 
+  goAnimation(): void{
+    setInterval( () => {
+      this.toggle = !this.toggle;
+    }, 2000);
   }
 
 }
