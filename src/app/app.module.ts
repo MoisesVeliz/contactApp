@@ -12,20 +12,20 @@ import {MatButtonModule} from '@angular/material/button';
 import {MatCardModule} from '@angular/material/card';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatDatepickerModule} from '@angular/material/datepicker';
-import {ErrorStateMatcher, MatNativeDateModule, ShowOnDirtyErrorStateMatcher} from '@angular/material/core';
+import {MatNativeDateModule} from '@angular/material/core';
 import {MatInputModule} from '@angular/material/input';
 
-import { HomeComponent } from './page/home/home.component';
-import { CardComponent } from './page/home/components/card/card.component';
-import { ContactListComponent } from './page/contact-list/contact-list.component';
-import { ContactComponent } from './page/contact-list/components/contact/contact.component';
-import { ModalComponent } from './page/contact-list/components/modal/modal.component';
-import { ModalDeleteComponent } from './page/contact-list/components/modal-delete/modal-delete.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HeaderComponent } from './shared/components/header/header.component';
 import { WelcomeComponent } from './page/welcome/welcome.component';
-import { DashComponent } from './shared/components/dash/dash.component';
 import { AlertModalComponent } from './shared/components/alert-modal/alert-modal.component';
+import { HomeComponent } from './page/dash/home/home.component';
+import { CardComponent } from './page/dash/home/components/card/card.component';
+import { ContactListComponent } from './page/dash/contact-list/contact-list.component';
+import { ContactComponent } from './page/dash/contact-list/components/contact/contact.component';
+import { ModalComponent } from './page/dash/contact-list/components/modal/modal.component';
+import { ModalDeleteComponent } from './page/dash/contact-list/components/modal-delete/modal-delete.component';
+import { DashComponent } from './page/dash/dash.component';
 
 @NgModule({
   declarations: [
@@ -41,6 +41,7 @@ import { AlertModalComponent } from './shared/components/alert-modal/alert-modal
     DashComponent,
     AlertModalComponent
   ],
+
   imports: [
     BrowserModule,
     AppRoutingModule,

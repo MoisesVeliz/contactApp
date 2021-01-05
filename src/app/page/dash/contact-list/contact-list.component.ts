@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { Contact } from 'src/app/page/contact-list/model/contact.model';
 import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
-import { LocalStorageService } from '../../shared/services/local-storage.service';
 import { Control } from './model/controls.modal';
-import { element } from 'protractor';
+import { Contact } from 'src/app/page/dash/contact-list/model/contact.model';
+import { LocalStorageService } from '../../../shared/services/local-storage.service';
 
 @Component({
   selector: 'app-contact-list',

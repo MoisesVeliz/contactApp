@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { Contact } from 'src/app/page/contact-list/model/contact.model';
-import { Control } from '../../page/contact-list/model/controls.modal';
+import { Contact } from 'src/app/page/dash/contact-list/model/contact.model';
+import { Control } from '../../page/dash/contact-list/model/controls.modal';
 
 @Injectable({
   providedIn: 'root'

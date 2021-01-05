@@ -1,8 +1,8 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { Contact } from 'src/app/page/contact-list/model/contact.model';
-import { Control } from 'src/app/page/contact-list/model/controls.modal';
-import { LocalStorageService } from '../../../../shared/services/local-storage.service';
-import { BirthdayService } from '../../../../shared/services/birthday.service';
+import { Contact } from 'src/app/page/dash/contact-list/model/contact.model';
+import { Control } from '../../../contact-list/model/controls.modal';
+import { LocalStorageService } from '../../../../../shared/services/local-storage.service';
+import { BirthdayService } from '../../../../../shared/services/birthday.service';
 
 @Component({
   selector: 'app-contact',

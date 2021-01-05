@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Contact } from '../../page/contact-list/model/contact.model';
+import { Contact } from '../../page/dash/contact-list/model/contact.model';
 import * as moment from 'moment';
 import { LocalStorageService } from './local-storage.service';
 

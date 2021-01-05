@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { LocalStorageService } from '../../shared/services/local-storage.service';
-import { BirthdayService } from '../../shared/services/birthday.service';
+import { LocalStorageService } from '../../../shared/services/local-storage.service';
+import { BirthdayService } from '../../../shared/services/birthday.service';
 
 @Component({
   selector: 'app-home',

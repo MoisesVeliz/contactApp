@@ -24,7 +24,6 @@
     "@angular/router": "~11.0.0",
     "@ng-bootstrap/ng-bootstrap": "^8.0.0",
     "animate.css": "^4.1.1",
-    "animejs": "^3.2.1",
     "bootstrap": "^4.5.0",
     "csshake": "^1.5.3",
     "moment": "^2.29.1",
